@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayali Salunkhe - Machine Learning Engineer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #f0f0f0;
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.1)" points="0,1000 1000,800 1000,1000"/></svg>');
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid rgba(255,255,255,0.3);
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+            background: rgba(255,255,255,0.1);
+            font-size: 4rem;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero h2 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: rgba(255,255,255,0.9);
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: rgba(255,255,255,0.9);
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border: 2px solid white;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary:hover {
+            background: transparent;
+            color: white;
+        }
+        
+        /* Sections */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+        
+        /* About Section */
+        .about {
+            background: #f8f9fa;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .stat {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .stat:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+            display: block;
+        }
+        
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+        
+        .skill-category h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Experience Section */
+        .experience {
+            background: #f8f9fa;
+        }
+        
+        .experience-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .experience-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            border-left: 5px solid #667eea;
+        }
+        
+        .experience-item h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .project-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1.5rem;
+        }
+        
+        .project-body {
+            padding: 1.5rem;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .tech-tag {
+            background: #f8f9fa;
+            color: #667eea;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-align: center;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: rgba(255,255,255,0.9);
+            transition: color 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            color: white;
+        }
+        
+        .contact-item i {
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Sayali Salunkhe</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="profile-img">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h1>Sayali Salunkhe</h1>
+                <h2>Generative AI & Machine Learning Engineer</h2>
+                <p>Experienced AI Engineer with 7+ years in ML/DL and specialized expertise in Generative AI, LLMs, and RAG systems. Currently working as a Generative AI developer at Siemens Technology and Services through Programming.com.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-envelope"></i> Get In Touch
+                    </a>
+                    <a href="https://github.com/say123ali" class="btn" target="_blank">
+                        <i class="fab fa-github"></i> View GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/sayali-salunkhe-a7a021b5/" class="btn" target="_blank">
+                        <i class="fab fa-linkedin"></i> LinkedIn Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a passionate Machine Learning and Deep Learning Engineer with over 3 years of hands-on experience in developing and deploying intelligent systems. My journey in AI/ML began during my postgraduate studies at OEP, Pune, and has evolved into a comprehensive understanding of the entire machine learning lifecycle.</p>
+                    
+                    <p>I specialize in building end-to-end ML solutions, from data collection and exploratory data analysis to feature engineering, model creation, hyperparameter tuning, and production deployment. My expertise spans across various domains including NLP, computer vision, and predictive analytics.</p>
+                    
+                    <p>I'm particularly excited about the intersection of research and practical applications, having worked on cutting-edge projects involving transformers, attention mechanisms, and neural machine translation.</p>
+                </div>
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-number">7+</span>
+                        <span>Years Experience</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">GenAI</span>
+                        <span>Specialist</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">LLMs</span>
+                        <span>& RAG Expert</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-magic"></i> Generative AI & LLMs</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">OpenAI GPT</span>
+                        <span class="skill-tag">Llama 2</span>
+                        <span class="skill-tag">BERT</span>
+                        <span class="skill-tag">RAG</span>
+                        <span class="skill-tag">Agentic RAG</span>
+                        <span class="skill-tag">GraphRAG</span>
+                        <span class="skill-tag">LLMOps</span>
+                        <span class="skill-tag">Vertex AI</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-brain"></i> Machine Learning</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Scikit-learn</span>
+                        <span class="skill-tag">XGBoost</span>
+                        <span class="skill-tag">Random Forest</span>
+                        <span class="skill-tag">SVM</span>
+                        <span class="skill-tag">K-Means</span>
+                        <span class="skill-tag">KNN</span>
+                        <span class="skill-tag">Decision Trees</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-robot"></i> Deep Learning</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">Keras</span>
+                        <span class="skill-tag">LSTMs</span>
+                        <span class="skill-tag">CNNs</span>
+                        <span class="skill-tag">Transformers</span>
+                        <span class="skill-tag">Seq2Seq</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-comments"></i> NLP & Text Processing</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">NLTK</span>
+                        <span class="skill-tag">SpaCy</span>
+                        <span class="skill-tag">Gensim</span>
+                        <span class="skill-tag">Hugging Face</span>
+                        <span class="skill-tag">Word2Vec</span>
+                        <span class="skill-tag">Topic Modeling</span>
+                        <span class="skill-tag">NMT</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-database"></i> Vector Databases & Search</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">VectorDB</span>
+                        <span class="skill-tag">FAISS</span>
+                        <span class="skill-tag">Pinecone</span>
+                        <span class="skill-tag">Chroma</span>
+                        <span class="skill-tag">Embeddings</span>
+                        <span class="skill-tag">Similarity Search</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Programming & Data</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">Matplotlib</span>
+                        <span class="skill-tag">Streamlit</span>
+                        <span class="skill-tag">Flask</span>
+                        <span class="skill-tag">MySQL</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-cloud"></i> Cloud & Deployment</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AWS EC2</span>
+                        <span class="skill-tag">Google Cloud Platform</span>
+                        <span class="skill-tag">Google Gen AI Studio</span>
+                        <span class="skill-tag">Model Deployment</span>
+                        <span class="skill-tag">MLOps</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-cogs"></i> ML Lifecycle</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">EDA</span>
+                        <span class="skill-tag">Feature Engineering</span>
+                        <span class="skill-tag">Hyperparameter Tuning</span>
+                        <span class="skill-tag">ETL</span>
+                        <span class="skill-tag">Data Analysis</span>
+                        <span class="skill-tag">Model Retraining</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section experience">
+        <div class="container">
+            <h2 class="section-title">Experience & Expertise</h2>
+            <div class="experience-content">
+                <div class="experience-item">
+                    <h3>Generative AI Engineer - Programming.com</h3>
+                    <p><strong>Jan 2025 - Present | Full-time | Pune, Maharashtra</strong></p>
+                    <p>Generative AI developer at Siemens Technology and Services, working on cutting-edge AI solutions and enterprise applications.</p>
+                    <div class="skill-tags" style="margin-top: 1rem;">
+                        <span class="skill-tag">Large Language Models (LLM)</span>
+                        <span class="skill-tag">OpenAI</span>
+                        <span class="skill-tag">Generative AI</span>
+                        <span class="skill-tag">RAG</span>
+                        <span class="skill-tag">Natural Language Generation</span>
+                        <span class="skill-tag">Agentic RAG</span>
+                        <span class="skill-tag">LLMOps</span>
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <h3>Generative AI Engineer - Freelancer.com</h3>
+                    <p><strong>Jan 2024 - Dec 2024 | Freelance | Remote</strong></p>
+                    <p>Collaborated with backend AI teams to develop doubt clustering, question answering, and generative AI modules. Implemented advanced NLP techniques leveraging transformers and LLMs for enhanced performance.</p>
+                    <div class="skill-tags" style="margin-top: 1rem;">
+                        <span class="skill-tag">RAG</span>
+                        <span class="skill-tag">GraphRAG</span>
+                        <span class="skill-tag">VectorDB</span>
+                        <span class="skill-tag">FAISS</span>
+                        <span class="skill-tag">LLM</span>
+                        <span class="skill-tag">OpenAI</span>
+                        <span class="skill-tag">Computer Vision</span>
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <h3>Senior Analyst Gen AI - Capgemini</h3>
+                    <p><strong>Aug 2024 - Nov 2024 | Full-time | Pune, Maharashtra (Hybrid)</strong></p>
+                    <p>Senior role focusing on Generative AI solutions and enterprise AI implementations at one of the world's leading consulting and technology services companies.</p>
+                </div>
+                
+                <div class="experience-item">
+                    <h3>Gen AI Engineer - Datamorphosis</h3>
+                    <p><strong>Apr 2024 - Jun 2024 | Full-time | Remote</strong></p>
+                    <p>Specialized in developing generative AI solutions with focus on large language models and cloud-based AI implementations.</p>
+                    <div class="skill-tags" style="margin-top: 1rem;">
+                        <span class="skill-tag">Llama</span>
+                        <span class="skill-tag">LLM</span>
+                        <span class="skill-tag">NLP</span>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">Generative AI</span>
+                        <span class="skill-tag">GCP</span>
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <h3>AI Engineer - RadicalX (Reality AI Lab)</h3>
+                    <p><strong>Nov 2023 - Jan 2024 | Internship | New York, United States (Remote)</strong></p>
+                    <p>Enhanced ReX AI Coach using cutting-edge technologies including OpenAI, Vertex AI, TensorFlow, Llama 2, and Google Gen AI Studio. Crafted intelligent solutions for personalized career guidance and mentorship.</p>
+                    <div class="skill-tags" style="margin-top: 1rem;">
+                        <span class="skill-tag">Llama</span>
+                        <span class="skill-tag">Generative AI</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">LLM</span>
+                        <span class="skill-tag">OpenAI</span>
+                        <span class="skill-tag">AI</span>
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <h3>Machine Learning Engineer - Cognizant</h3>
+                    <p><strong>Feb 2018 - Aug 2019 | Full-time | Pune, Maharashtra</strong></p>
+                    <p>Worked on machine learning solutions and data engineering pipelines, focusing on ETL processes and data analysis for enterprise clients.</p>
+                    <div class="skill-tags" style="margin-top: 1rem;">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">ETL</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">Data Analysis</span>
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <h3>Student Intern - Applied AI Course</h3>
+                    <p><strong>Aug 2019 - Jul 2020 | Part-time</strong></p>
+                    <p>Comprehensive training in AI/ML fundamentals including neural networks, deep learning, and data visualization techniques.</p>
+                    <div class="skill-tags" style="margin-top: 1rem;">
+                        <span class="skill-tag">Neural Networks</span>
+                        <span class="skill-tag">Data Visualization</span>
+                        <span class="skill-tag">Deep Learning</span>
+                        <span class="skill-tag">EDA</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">AI</span>
+                        <span class="skill-tag">Machine Learning</span>
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <h3>Teaching Assistant - COEP Technological University</h3>
+                    <p><strong>Aug 2015 - Jul 2017 | Part-time | Pune</strong></p>
+                    <p>Supported academic activities and research initiatives at one of India's premier technological institutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3><i class="fas fa-language"></i> Neural Machine Translation</h3>
+                    </div>
+                    <div class="project-body">
+                        <p>Advanced NMT system using transformer architecture with attention mechanisms for high-quality language translation.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">Transformers</span>
+                            <span class="tech-tag">BERT</span>
+                            <span class="tech-tag">Attention</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3><i class="fas fa-search"></i> Topic Modeling System</h3>
+                    </div>
+                    <div class="project-body">
+                        <p>Intelligent topic discovery and document clustering system using advanced NLP techniques and unsupervised learning.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">NLTK</span>
+                            <span class="tech-tag">Gensim</span>
+                            <span class="tech-tag">SpaCy</span>
+                            <span class="tech-tag">K-Means</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3><i class="fas fa-chart-line"></i> Predictive Analytics Platform</h3>
+                    </div>
+                    <div class="project-body">
+                        <p>End-to-end ML platform for predictive analytics with automated feature engineering and model selection.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Scikit-learn</span>
+                            <span class="tech-tag">XGBoost</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">AWS</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3><i class="fas fa-eye"></i> Computer Vision Application</h3>
+                    </div>
+                    <div class="project-body">
+                        <p>Deep learning application for image classification and object detection using convolutional neural networks.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">CNNs</span>
+                            <span class="tech-tag">Keras</span>
+                            <span class="tech-tag">OpenCV</span>
+                            <span class="tech-tag">GCP</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3><i class="fas fa-desktop"></i> ML Web Application</h3>
+                    </div>
+                    <div class="project-body">
+                        <p>Interactive web application for ML model deployment and visualization using Streamlit and Flask.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">Matplotlib</span>
+                            <span class="tech-tag">Pandas</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3><i class="fas fa-brain"></i> LSTM Time Series</h3>
+                    </div>
+                    <div class="project-body">
+                        <p>Time series forecasting system using LSTM networks for sequential data prediction and analysis.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">LSTMs</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">NumPy</span>
+                            <span class="tech-tag">Time Series</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="https://github.com/say123ali" class="btn btn-primary" target="_blank">
+                    <i class="fab fa-github"></i> View All Projects on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <p>I am open to new exciting opportunities with valuable organizations. Let's discuss how we can work together!</p>
+            
+            <div class="contact-info">
+                <a href="mailto:sayali.sk333@gmail.com" class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <strong>Email</strong><br>
+                        sayali.sk333@gmail.com
+                    </div>
+                </a>
+                
+                <a href="https://github.com/say123ali" class="contact-item" target="_blank">
+                    <i class="fab fa-github"></i>
+                    <div>
+                        <strong>GitHub</strong><br>
+                        github.com/say123ali
+                    </div>
+                </a>
+                
+                <a href="https://www.linkedin.com/in/sayali-salunkhe-a7a021b5/" class="contact-item" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                    <div>
+                        <strong>LinkedIn</strong><br>
+                        Connect with me
+                    </div>
+                </a>
+                
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong>Location</strong><br>
+                        Pune, Maharashtra
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sayali Salunkhe. All rights reserved. Built with passion for Machine Learning and Innovation.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(102, 126, 234, 0.95)';
+                nav.style.backdropFilter = 'blur(10px)';
+            } else {
+                nav.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                nav.style.backdropFilter = 'none';
+            }
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translate
